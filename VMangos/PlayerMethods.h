@@ -2389,8 +2389,8 @@ namespace LuaPlayer
     int SendListInventory(lua_State* L, Player* player)
     {
         WorldObject* obj = Eluna::CHECKOBJ<WorldObject>(L, 2);
-
-        player->GetSession()->SendListInventory(obj->GET_GUID());
+        uint32 vendorId = Eluna::CHECKVAL<uint32>(L, 3, 0);
+        player->GetSession()->SendListInventoryForEntry(obj->GET_GUID(), vendorId);
         return 0;
     }
 
